@@ -2,7 +2,7 @@ import scala.io.Source
 
 @main def day1_1 = {
   val res = Source
-    .fromResource("day1_1_main")
+    .fromResource("day1_main")
     .getLines
     .foldLeft(0 :: Nil)((res, line) => {
       line match
@@ -15,7 +15,7 @@ import scala.io.Source
 
 @main def day1_2 = {
   val res = Source
-    .fromResource("day1_1_main")
+    .fromResource("day1_main")
     .getLines
     .foldLeft(0 :: Nil)((res, line) => {
       line match
