@@ -3,7 +3,7 @@ import scala.io.Source
 case class Pos(val x: Int, val y: Int):
   def in(direction: Direction): Pos =
     direction match
-      case None      => Pos(x, y)
+      case Nowhere      => Pos(x, y)
       case Left      => Pos(x - 1, y)
       case LeftUp    => Pos(x - 1, y + 1)
       case Up        => Pos(x, y + 1)
@@ -15,7 +15,7 @@ case class Pos(val x: Int, val y: Int):
 
   def from(direction: Direction): Pos =
     direction match
-      case None      => Pos(x, y)
+      case Nowhere      => Pos(x, y)
       case Left      => Pos(x + 1, y)
       case LeftUp    => Pos(x + 1, y - 1)
       case Up        => Pos(x, y - 1)
@@ -26,7 +26,7 @@ case class Pos(val x: Int, val y: Int):
       case LeftDown  => Pos(x + 1, y + 1)
 
 sealed trait Direction
-case object None extends Direction
+case object Nowhere extends Direction
 case object Left extends Direction
 case object LeftUp extends Direction
 case object Up extends Direction
@@ -39,13 +39,13 @@ case object LeftDown extends Direction
 extension (tail: Direction)
   def newTail(headMovement: Direction): Direction =
     (tail, headMovement) match
-      case (None, direction) => direction
-      case (direction, None) => direction
+      case (Nowhere, direction) => direction
+      case (direction, Nowhere) => direction
 
       case (Left, Right) | (LeftUp, RightDown) | (Up, Down) |
           (RightUp, LeftDown) | (Right, Left) | (RightDown, LeftUp) |
           (Down, Up) | (LeftDown, RightUp) =>
-        None
+        Nowhere
 
       case (Left, Up) | (Up, Left) | (LeftUp, LeftUp)             => LeftUp
       case (Right, Up) | (Up, Right) | (RightUp, RightUp)         => RightUp
@@ -93,7 +93,7 @@ extension (tail: Direction)
           (RightDown, Down) | (Down, RightDown) =>
         RightDown
 
-      case (_, _) => None
+      case (_, _) => Nowhere
 
 case class Rope(
     val head: Pos,
@@ -105,7 +105,7 @@ case class Rope(
     Rope(head in direction, fromTail.newTail(direction))
 
 object Rope:
-  val init = Rope(Pos(0, 0), None)
+  val init = Rope(Pos(0, 0), Nowhere)
 
 case class LongRope(chains: List[Rope]):
   def tail: Pos = chains.last.tail
@@ -153,7 +153,7 @@ case class LongRope(chains: List[Rope]):
       .map(println)
 
 object LongRope:
-  val init = LongRope(List.fill(9)(Rope(Pos(0, 0), None)))
+  val init = LongRope(List.fill(9)(Rope(Pos(0, 0), Nowhere)))
 
 @main def day9_1 = {
   val res = Source
