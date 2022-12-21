@@ -1,6 +1,8 @@
+package day7
+
 import scala.io.Source
 
-@main def day7_1 = {
+@main def task1 = {
   val (dirSizes, _) = Source
     .fromResource("day7_main")
     .getLines
@@ -23,7 +25,7 @@ import scala.io.Source
   println(res)
 }
 
-@main def day7_2 = {
+@main def task2 = {
   val (dirSizes, _) = Source
     .fromResource("day7_main")
     .getLines

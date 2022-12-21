@@ -1,10 +1,12 @@
+package day8
+
 import scala.io.Source
 
 type Heights = List[List[Int]]
 type Distances = List[List[Int]]
 type Visibility = List[List[Boolean]]
 
-@main def day8_1 = {
+@main def task1 = {
   val heights = Source
     .fromResource("day8_main")
     .getLines
@@ -21,7 +23,7 @@ type Visibility = List[List[Boolean]]
   println(res)
 }
 
-@main def day8_2 = {
+@main def task2 = {
   val heights = Source
     .fromResource("day8_main")
     .getLines

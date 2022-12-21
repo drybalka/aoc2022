@@ -1,3 +1,5 @@
+package day9
+
 import scala.io.Source
 
 case class Pos(val x: Int, val y: Int):
@@ -155,7 +157,7 @@ case class LongRope(chains: List[Rope]):
 object LongRope:
   val init = LongRope(List.fill(9)(Rope(Pos(0, 0), Nowhere)))
 
-@main def day9_1 = {
+@main def task1 = {
   val res = Source
     .fromResource("day9_main")
     // .fromResource("day9_test")
@@ -192,7 +194,7 @@ object LongRope:
   println(res)
 }
 
-@main def day9_2 = {
+@main def task2 = {
   val res = Source
     .fromResource("day9_main")
     // .fromResource("day9_test")

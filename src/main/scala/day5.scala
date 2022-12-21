@@ -1,6 +1,8 @@
+package day5
+
 import scala.io.Source
 
-@main def day5_1 = {
+@main def task1 = {
   val (input, operations) = Source
     .fromResource("day5_main")
     .getLines
@@ -27,7 +29,7 @@ import scala.io.Source
     .foreach(print)
 }
 
-@main def day5_2 = {
+@main def task2 = {
   val (input, operations) = Source
     .fromResource("day5_main")
     .getLines

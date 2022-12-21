@@ -1,6 +1,8 @@
+package day6
+
 import scala.io.Source
 
-@main def day6_1 = {
+@main def task1 = {
   val res = Source
     .fromResource("day6_main")
     .bufferedReader
@@ -11,7 +13,7 @@ import scala.io.Source
     println(res + 4)
 }
 
-@main def day6_2 = {
+@main def task2 = {
   val res = Source
     .fromResource("day6_main")
     .bufferedReader

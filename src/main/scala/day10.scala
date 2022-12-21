@@ -1,9 +1,11 @@
+package day10
+
 import scala.io.Source
 
 type State = (Int, Int, List[Int])
 type Screen = (Int, Int, String)
 
-@main def day10_1 = {
+@main def task1 = {
   val res = Source
     .fromResource("day10_main")
     // .fromResource("day10_test")
@@ -18,7 +20,7 @@ type Screen = (Int, Int, String)
   println(res)
 }
 
-@main def day10_2 = {
+@main def task2 = {
   val res = Source
     .fromResource("day10_main")
     // .fromResource("day10_test")

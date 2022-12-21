@@ -1,3 +1,5 @@
+package day13
+
 import scala.io.Source
 
 case class NestedList(items: List[NestedList | Int]):
@@ -58,7 +60,7 @@ object NestedList:
     val split = str.split("(,|(?<=\\[)|(?=\\]))").toList.reverse
     fromTokens(split, Nil)
 
-@main def day13_1 = {
+@main def task1 = {
   val res = Source
     .fromResource("day13_main")
     // .fromResource("day13_test")
@@ -78,7 +80,7 @@ object NestedList:
   println(res)
 }
 
-@main def day13_2 = {
+@main def task2 = {
   val res = Source
     .fromResource("day13_main")
     // .fromResource("day13_test")

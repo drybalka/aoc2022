@@ -1,38 +1,11 @@
+package day12
+
 import scala.io.Source
+import field.*
 
-type Pos = (Int, Int)
-extension (pos: Pos)
-  def x: Int = pos._1
-  def y: Int = pos._2
-  def neighbours: List[Pos] =
-    List((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1))
-  // def left: Pos = (x - 1, y)
-  // def right: Pos = (x + 1, y)
-  // def top: Pos = (x, y + 1)
-  // def bottom: Pos = (x, y - 1)
+type Board = Field[Int]
 
-type Field = Vector[Vector[Int]]
-extension (field: Field)
-  def print(): Unit =
-    field.map {
-      println(_)
-    }
-
-  def updated(pos: Pos, value: Int): Field =
-    field.updated(pos.y, field(pos.y).updated(pos.x, value))
-
-  def posOf(element: Int): Pos =
-    val y = field.indexWhere(_.contains(element))
-    val x = field(y).indexOf(element)
-    (x, y)
-
-  def inBorders(pos: Pos): Boolean =
-    field.isDefinedAt(pos.y) && field(pos.y).isDefinedAt(pos.x)
-
-  def apply(pos: Pos): Int =
-    field(pos.y)(pos.x)
-
-@main def day12_1 = {
+@main def task1 = {
   val input = Source
     .fromResource("day12_main")
     // .fromResource("day12_test")
@@ -46,7 +19,7 @@ extension (field: Field)
   val heights = input.updated(S, 0).updated(E, 26)
   val steps = heights.map(_.map(_ => input.size * input(0).size))
 
-  def dp(steps: Field, stack: List[(Pos, Int)]): Field =
+  def dp(steps: Board, stack: List[(Pos, Int)]): Board =
     stack match
       case Nil => steps
       case head :: next =>
@@ -64,7 +37,7 @@ extension (field: Field)
   println(dp(steps, (S, 0) :: Nil)(E))
 }
 
-@main def day12_2 = {
+@main def task2 = {
   val input = Source
     .fromResource("day12_main")
     // .fromResource("day12_test")
@@ -78,7 +51,7 @@ extension (field: Field)
   val heights = input.updated(S, 0).updated(E, 26)
   val steps = heights.map(_.map(_ => input.size * input(0).size))
 
-  def dp(steps: Field, stack: List[(Pos, Int)]): Field =
+  def dp(steps: Board, stack: List[(Pos, Int)]): Board =
     stack match
       case Nil => steps
       case head :: next =>

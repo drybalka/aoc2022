@@ -1,6 +1,8 @@
+package day11
+
 import scala.io.Source
 
-@main def day11_1 = {
+@main def task1 = {
   val monkeyMap = Source
     .fromResource("day11_main")
     // .fromResource("day11_test")
@@ -27,7 +29,7 @@ import scala.io.Source
   println(res.toList.sorted(Ordering.Int.reverse).take(2).product)
 }
 
-@main def day11_2 = {
+@main def task2 = {
   val monkeyMap = Source
     .fromResource("day11_main")
     // .fromResource("day11_test")
