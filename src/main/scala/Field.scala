@@ -13,9 +13,9 @@ extension (pos: Pos)
 
 type Field[A] = Vector[Vector[A]]
 extension[A] (field: Field[A])
-  def print(): Unit =
-    field.map {
-      println(_)
+  def print(stringify: A => String = (a: A) => a.toString): Unit = 
+    field.map {line =>
+      println(line.map(stringify).mkString(" "))
     }
 
   def updated(pos: Pos, value: A): Field[A] =
